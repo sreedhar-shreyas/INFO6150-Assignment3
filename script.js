@@ -23,7 +23,7 @@ function addrecord() {
   console.log(table);
   var tbody = document.getElementsByTagName("tbody")[0];
 
-  var studentName = table.lastElementChild.lastElementChild?.previousElementSibling?.firstElementChild?.nextElementSibling.innerHTML || "Student 0" //gets the last student name 
+  var studentName = table.lastElementChild.lastElementChild?.previousElementSibling?.firstElementChild?.nextElementSibling?.innerHTML || "Student 0" //gets the last student name 
   console.log(studentName);
 
   var lastIndex = studentName.split(" ")[1]; //splitsthestudentname to two parts
@@ -104,10 +104,11 @@ function tableView() {
 
 //checkbox condition 
 //Issue - Adds edit to the first child, should be active child row - Resolved by changeing gettablefirstrow to selchceckboxrow for adding edit button
-
+// document.querySelector('#button').disabled = true;
 function onClickCheckBox(checkBox) {
   console.log(checkBox); 
-
+  // btncolor(checkBox);
+  // document.querySelector('#button').disabled = false;
   var table = document.getElementById("myTable"); //gets the full table to table variable
 
   var selcheckboxrow = checkBox.parentElement.parentElement; //choosing the checkbox
@@ -115,10 +116,16 @@ function onClickCheckBox(checkBox) {
   var getTableHeadingRow = table.lastElementChild.firstChild; //Table->tbody->First Heading
   var getTableFirstRow = table.firstElementChild.firstChild.nextElementSibling; //Table->tbody->First Heading Row -> First row elements
 
+  var totalRowCount = table.rows.length;
+  var test2 = table.firstElementChild.firstElementChild.childElementCount; //getsthecount of ths
+  console.log("yo bro"+test2); // m-x 1-
   //Checkbox bg color change and adding new elements
+
   if (checkBox.checked == true) {
 
+
     selcheckboxrow.style.backgroundColor = "Yellow"; //Changes bgcolor of the checkbox row
+    document.querySelector('#button').disabled = false;
 
     var deleteButton = document.createElement("td"); //Add new td
     var deleteBtnRowHeading = document.createElement("th"); // Add new th to delete Btn Heading
@@ -137,24 +144,92 @@ function onClickCheckBox(checkBox) {
    
     console.log("Checkbox should be delete"+selcheckboxrow);
     console.log("Edit should be edit"+getTableHeadingRow);
+    
   }
+  
   else 
   {
     selcheckboxrow.style.backgroundColor = "White";
+    
     selcheckboxrow.deleteCell(9);
     getTableHeadingRow.deleteCell(9);
     console.log("def working");
     selcheckboxrow.deleteCell(8);
     getTableHeadingRow.deleteCell(8);
     console.log("maybeworking");
-    
+    if(checkBox.checked == true){
+      document.querySelector('#button').disabled = false;
+    }
+    else{
+      document.querySelector('#button').disabled = true;
+    }
   }
+  
+  // if (selcheckboxrow.style.backgroundColor === "yellow"){
+  //   console.log("working")
+  // }
+  // else{
+  //   console.log("else working")
+  // }
+  // var idk = document.querySelectorAll('input[type="checkbox"]:checked').length;
+  // console.log(idk+"dfdfdfdf")
+}
+
+// function btncolor(checkBox){
+
+//   var idk = document.querySelectorAll('input[type="checkbox"]:checked').length;
+//   console.log(idk+"dfdfdfdf")
+
+//   document.querySelectorAll('.checkbox').forEach(c=> c.checked=1)
+//   if(c==1){
+//     document.querySelector('#button').disabled = false;
+//   }
+// else {
+  // var checkingstate = checkBox.checked 
+  // if(checkingstate= true){
+  //   document.querySelector('#button').disabled = false;
+  // }
+  // else{
+  //   document.querySelector('#button').disabled = true;
+
+  // }
+  // if (checkBox.checked == true) {
+  //  
+  //   console.log("brudaaa")
+  // }
+  // else {
+  //   document.querySelector('#button').disabled = true;
+  // }
+// }
+
+function onDeleteRow(deleteButtonRef) {
+  
+
+  var table = document.getElementById("myTable"); 
+  var getTableHeadingRow = table.lastElementChild.firstChild; //Table->tbody->First Heading
+   
+  var selectedRow = deleteButtonRef.parentElement.parentElement;
+  var index = selectedRow.rowIndex;
+  document.getElementById("myTable").deleteRow(selectedRow.rowIndex);
+  alert("Row " + index + " Sucessfully been deleted")
+  
+  getTableHeadingRow.deleteCell(-1);
+  getTableHeadingRow.deleteCell(-1);
+  // document.querySelector('#button').disabled = true;
+
+  console.log("def working");
 
 }
 
-function onDeleteRow(deleteButtonRef) {
-  var selectedRow = deleteButtonRef.parentElement.parentElement;
-  var index = selectedRow.rowIndex;
-  document.getElementById("myTable").DeleteRow(selectedRow.rowIndex);
-  alert(selectedRow.index + "Has been deleted")
+
+function onEditRow(editButtonRef)
+{
+  var table = document.getElementById("myTable"); 
+  var getTableHeadingRow = table.lastElementChild.firstChild; //Table->tbody->First Heading
+   
+  var selectedRow = editButtonRef.parentElement.parentElement;
+  var index = selectedRow.firstElementChild.nextElementSibling.innerHTML;
+  prompt("Edit " + index + " Details:")
+  
+  // window.prompt("Are you feeling lucky"); 
 }

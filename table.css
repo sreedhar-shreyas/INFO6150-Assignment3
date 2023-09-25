@@ -15,15 +15,3 @@
 	color: #fff;
 	background-color: #a7c942;
 }
-#button {
-	color:#fff;
-	background-color: orange;
-	border-radius: 3px;
-	border:2px solid orange;
-	margin-left: 180px;
-}
-#button[disabled]
-{
- background-color: grey;
- border:2px solid gray;
-}
