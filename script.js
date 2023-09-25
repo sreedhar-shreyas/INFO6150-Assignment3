@@ -1,15 +1,14 @@
 //Title constructor function that creates a Title object
-function Title(t1) 
-{ this.mytitle = t1;
+function Title(t1) {
+  this.mytitle = t1;
 }
 
-Title.prototype.getName = function () 
-{ 
-return (this.mytitle);
+Title.prototype.getName = function () {
+  return (this.mytitle);
 }
 
 var socialMedia = {
-  facebook : 'http://facebook.com',
+  facebook: 'http://facebook.com',
   twitter: 'http://twitter.com',
   flickr: 'http://flickr.com',
   youtube: 'http://youtube.com'
@@ -23,22 +22,22 @@ function addrecord() {
   var table = document.getElementById("myTable");
   console.log(table);
   var tbody = document.getElementsByTagName("tbody")[0];
-  
+
 
   // var studentName = table.lastElementChild.lastElementChild?.firstElementChild?.nextElementSibling?.innerHTML || "Student 0"
   var studentName = table.lastElementChild.lastElementChild?.previousElementSibling?.firstElementChild?.nextElementSibling.innerHTML || "Student 0"
-  console.log(studentName); 
-  
-  var lastIndex = studentName.split(" ")[1]; 
-   var tableRow = document.createElement("tr");
-   var tdCheckBoxNode = document.createElement("td");
-   tdCheckBoxNode.innerHTML = '<input type="checkbox" onclick="onClickCheckBox(this)" /><br/><br/><img src="./down.png" width="25px" onclick="tableView()">'  
-   var tableDataStudent = document.createElement("td");
-   tableDataStudent.innerHTML = 'Student '+(parseInt(lastIndex)+1)
-   var tableDataTeacher = document.createElement("td");
-   tableDataTeacher.innerHTML = 'Teacher '+(parseInt(lastIndex)+1)
-   var tableDataStatus = document.createElement("td");
-   tableDataStatus.innerHTML = 'Approved'
+  console.log(studentName);
+
+  var lastIndex = studentName.split(" ")[1];
+  var tableRow = document.createElement("tr");
+  var tdCheckBoxNode = document.createElement("td");
+  tdCheckBoxNode.innerHTML = '<input type="checkbox" onclick="onClickCheckBox(this)" /><br/><br/><img src="./down.png" width="25px" onclick="tableView()">'
+  var tableDataStudent = document.createElement("td");
+  tableDataStudent.innerHTML = 'Student ' + (parseInt(lastIndex) + 1)
+  var tableDataTeacher = document.createElement("td");
+  tableDataTeacher.innerHTML = 'Teacher ' + (parseInt(lastIndex) + 1)
+  var tableDataStatus = document.createElement("td");
+  tableDataStatus.innerHTML = 'Approved'
   var tableDataTerm = document.createElement("td");
   tableDataTerm.innerHTML = 'Fall'
   var tableDataType = document.createElement("td");
@@ -54,40 +53,40 @@ function addrecord() {
   var tdAuthor9 = document.createElement("td");
   tdAuthor9.innerHTML = 'Advisor:<br /><br />Award Details<br />Summer 1-2014(TA)<br />Budget Number: <br />Tuition Number: <br />Comments:<br /><br /><br />Award Status:<br /><br /><br />'
 
-  
 
 
-   tableRow.appendChild(tdCheckBoxNode);
-   tableRow.appendChild(tableDataStudent);
 
-   tableRow.appendChild(tableDataTeacher);
+  tableRow.appendChild(tdCheckBoxNode);
+  tableRow.appendChild(tableDataStudent);
 
-   tableRow.appendChild(tableDataStatus);
+  tableRow.appendChild(tableDataTeacher);
 
-   tableRow.appendChild(tableDataTerm);
-   tableRow.appendChild(tableDataType);
+  tableRow.appendChild(tableDataStatus);
 
-   tableRow.appendChild(tableDataBudget);
+  tableRow.appendChild(tableDataTerm);
+  tableRow.appendChild(tableDataType);
 
-   tableRow.appendChild(tableDataPercentage);
+  tableRow.appendChild(tableDataBudget);
+
+  tableRow.appendChild(tableDataPercentage);
 
   //  tableRow.appendChild(tableDataDelete);
-   tbody.appendChild(tableRow);
-   
-   trNode.appendChild(tdAuthor9);
-   
+  tbody.appendChild(tableRow);
 
-   tbody.appendChild(trNode);
-  
+  trNode.appendChild(tdAuthor9);
+
+
+  tbody.appendChild(trNode);
+
   // alert(tableDataStudent.innerHTML+" Added Succesfully");
-// checkData();
-// var tblds=addrecord.studentName;
-// tbl3 = addrecord.tableDataStudent;
-if (studentName === null) {
-  alert( "Failed to add row");
-} else {
-    alert(tableDataStudent.innerHTML+" Added Succesfully");
-}
+  // checkData();
+  // var tblds=addrecord.studentName;
+  // tbl3 = addrecord.tableDataStudent;
+  if (studentName === null) {
+    alert("Failed to add row");
+  } else {
+    alert(tableDataStudent.innerHTML + " Added Succesfully");
+  }
 
 }
 
@@ -102,46 +101,81 @@ if (studentName === null) {
 // }
 
 function checkData() {
- 
+
 }
 function tableView() {
   var tbl = document.getElementsByClassName("dropDownTextArea");
   console.log("first");
   Array.from(tbl).forEach((x) => {
     if (x.style.display === "block") {
-    x.style.display = "none";
-  } else {
-    console.log("broosecond");
-    x.style.display = "block";
-  }
-})
+      x.style.display = "none";
+    } else {
+      console.log("broosecond");
+      x.style.display = "block";
+    }
+  })
 };
 // function tableView() {
 // tabletoggle = document .querySelector (".dropDownTextArea");
 
 //   tabletoggle.classList.toggle("hide");
 // }
-function onClickCheckBox(checkBox){
+function onClickCheckBox(checkBox) {
   console.log(checkBox);
   var table = document.getElementById("myTable");
-  
-  var adddelcol = table.firstElementChild.firstElementChild.lastElementChild;
+
+  // var adddelcol = table.firstElementChild.firstElementChild.lastElementChild;
   var selcheckboxrow = checkBox.parentElement.parentElement;
-  if(checkBox.checked == true)
-  {
-    selcheckboxrow.style.backgroundColor="Yellow";
-    var deleteButtonHeader = document.createElement("th");
-    deleteButtonHeader.innerHTML = 'Delete'
-    adddelcol.appendChild(deleteButtonHeader);
+  var idkletssee = table.lastElementChild.firstChild;
+  var idkletssee2 = table.firstElementChild.firstChild.nextElementSibling;
+  if (checkBox.checked == true) {
+    selcheckboxrow.style.backgroundColor = "Yellow";
+    // var deleteButtonHeader = document.createElement("th");
+    // deleteButtonHeader.innerHTML = 'Delete'
+    // adddelcol.appendChild(deleteButtonHeader);
     var deleteButton = document.createElement("td");
-    deleteButton.innerHTML = '<button id="deleted" type="button" onClick="onDelete(this)" >Delete</button>'
+    var idkvar = document.createElement("th");
+    var idkvar2 = document.createElement("th");
+    var inneridkvar3 = document.createElement("td");
+    inneridkvar3.innerHTML = '<button id="edited" type="button" onClick="onEditRow(this)" >Edit</button>'
+
+  
+    idkvar.innerHTML = 'Delete';
+    idkvar2.innerHTML = 'Edit';
+    deleteButton.innerHTML = '<button id="deleted" type="button" onClick="onDeleteRow(this)" >Delete</button>'
     
+    idkletssee.appendChild(idkvar);
+    idkletssee.appendChild(idkvar2);
+    idkletssee2.appendChild(inneridkvar3);
+   
+
+    console.log(idkletssee);
     selcheckboxrow.appendChild(deleteButton);
   }
-  else{
-    selcheckboxrow.style.backgroundColor="White";
-    selcheckboxrow.deleteCell(8)
+  else {
+    selcheckboxrow.style.backgroundColor = "White";
+    selcheckboxrow.deleteCell(9);
+    idkletssee.deleteCell(9);
+    console.log("def working");
+    selcheckboxrow.deleteCell(8);
+    idkletssee.deleteCell(8);
+    console.log("maybeworking");
+    
+
+    // selcheckboxrow.
     // selcheckboxrow.deleteColumn(8)
+    // selcheckboxrow.deleteCell(9);
   }
 
+ 
+
+
+
+}
+
+function onDeleteRow(deleteButtonRef) {
+  var selectedRow = deleteButtonRef.parentElement.parentElement;
+  var index = selectedRow.rowIndex;
+  document.getElementById("myTable").DeleteRow(selectedRow.rowIndex);
+  alert(selectedRow.index + "Has been deleted")
 }
