@@ -25,7 +25,11 @@ body {
   text-align: center;
   font-size: 24px;
 }
-/* 
+
 .dropDownTextArea{
-	display: none;
-} */
+  display: none;
+}
+
+.hide{
+	display: block;
+}
