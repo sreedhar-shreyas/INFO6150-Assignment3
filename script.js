@@ -23,65 +23,63 @@ function addrecord() {
   console.log(table);
   var tbody = document.getElementsByTagName("tbody")[0];
 
-
-  // var studentName = table.lastElementChild.lastElementChild?.firstElementChild?.nextElementSibling?.innerHTML || "Student 0"
-  var studentName = table.lastElementChild.lastElementChild?.previousElementSibling?.firstElementChild?.nextElementSibling.innerHTML || "Student 0"
+  var studentName = table.lastElementChild.lastElementChild?.previousElementSibling?.firstElementChild?.nextElementSibling.innerHTML || "Student 0" //gets the last student name 
   console.log(studentName);
 
-  var lastIndex = studentName.split(" ")[1];
+  var lastIndex = studentName.split(" ")[1]; //splitsthestudentname to two parts
+
   var tableRow = document.createElement("tr");
+
   var tdCheckBoxNode = document.createElement("td");
   tdCheckBoxNode.innerHTML = '<input type="checkbox" onclick="onClickCheckBox(this)" /><br/><br/><img src="./down.png" width="25px" onclick="tableView()">'
+
   var tableDataStudent = document.createElement("td");
   tableDataStudent.innerHTML = 'Student ' + (parseInt(lastIndex) + 1)
+
   var tableDataTeacher = document.createElement("td");
   tableDataTeacher.innerHTML = 'Teacher ' + (parseInt(lastIndex) + 1)
+
   var tableDataStatus = document.createElement("td");
   tableDataStatus.innerHTML = 'Approved'
+
   var tableDataTerm = document.createElement("td");
   tableDataTerm.innerHTML = 'Fall'
+
   var tableDataType = document.createElement("td");
   tableDataType.innerHTML = 'TA'
+
   var tableDataBudget = document.createElement("td");
   tableDataBudget.innerHTML = '12344'
+
   var tableDataPercentage = document.createElement("td");
   tableDataPercentage.innerHTML = '100%'
-  // var tableDataDelete = document.createElement("td");
-  // tableDataDelete.innerHTML = '<button>Delete</button>'
-  var trNode = document.createElement("tr");
-  trNode.className = "dropDownTextArea";  //broaddclasstoelement
-  var tdAuthor9 = document.createElement("td");
-  tdAuthor9.innerHTML = 'Advisor:<br /><br />Award Details<br />Summer 1-2014(TA)<br />Budget Number: <br />Tuition Number: <br />Comments:<br /><br /><br />Award Status:<br /><br /><br />'
 
+  
+  var tableDataAddnewtr = document.createElement("tr");
+  tableDataAddnewtr.className = "dropDownTextArea";  //broaddclasstoelement
 
+  var tableDataDropdownText = document.createElement("td");
+  tableDataDropdownText.innerHTML = 'Advisor:<br /><br />Award Details<br />Summer 1-2014(TA)<br />Budget Number: <br />Tuition Number: <br />Comments:<br /><br /><br />Award Status:<br /><br /><br />'
 
 
   tableRow.appendChild(tdCheckBoxNode);
   tableRow.appendChild(tableDataStudent);
 
   tableRow.appendChild(tableDataTeacher);
-
   tableRow.appendChild(tableDataStatus);
 
   tableRow.appendChild(tableDataTerm);
   tableRow.appendChild(tableDataType);
 
   tableRow.appendChild(tableDataBudget);
-
   tableRow.appendChild(tableDataPercentage);
 
-  //  tableRow.appendChild(tableDataDelete);
   tbody.appendChild(tableRow);
+  tableDataAddnewtr.appendChild(tableDataDropdownText);
+  tbody.appendChild(tableDataAddnewtr);
 
-  trNode.appendChild(tdAuthor9);
 
-
-  tbody.appendChild(trNode);
-
-  // alert(tableDataStudent.innerHTML+" Added Succesfully");
-  // checkData();
-  // var tblds=addrecord.studentName;
-  // tbl3 = addrecord.tableDataStudent;
+// Pop up check if Student is added properly
   if (studentName === null) {
     alert("Failed to add row");
   } else {
@@ -90,86 +88,67 @@ function addrecord() {
 
 }
 
-// function addrecord2(){
-//   var tableRow1 = document.createElement("tr");
-//   var tdCheckBoxNode1 = document.createElement("td");
-//   tdCheckBoxNode1.innerHTML = '<input type="checkbox" onclick="onClickCheckBox(this)" />'  
-
-//   tableRow.appendChild(tdCheckBoxNode1);
-
-//   tbody.appendChild(tableRow1);
-// }
-
-function checkData() {
-
-}
 function tableView() {
   var tbl = document.getElementsByClassName("dropDownTextArea");
-  console.log("first");
+  console.log("tbl variable got the data");
   Array.from(tbl).forEach((x) => {
     if (x.style.display === "block") {
       x.style.display = "none";
     } else {
-      console.log("broosecond");
+      console.log("in the else condition");
       x.style.display = "block";
     }
   })
 };
-// function tableView() {
-// tabletoggle = document .querySelector (".dropDownTextArea");
 
-//   tabletoggle.classList.toggle("hide");
-// }
+
+//checkbox condition 
+//Issue - Adds edit to the first child, should be active child row - Resolved by changeing gettablefirstrow to selchceckboxrow for adding edit button
+
 function onClickCheckBox(checkBox) {
-  console.log(checkBox);
-  var table = document.getElementById("myTable");
+  console.log(checkBox); 
 
-  // var adddelcol = table.firstElementChild.firstElementChild.lastElementChild;
-  var selcheckboxrow = checkBox.parentElement.parentElement;
-  var idkletssee = table.lastElementChild.firstChild;
-  var idkletssee2 = table.firstElementChild.firstChild.nextElementSibling;
+  var table = document.getElementById("myTable"); //gets the full table to table variable
+
+  var selcheckboxrow = checkBox.parentElement.parentElement; //choosing the checkbox
+
+  var getTableHeadingRow = table.lastElementChild.firstChild; //Table->tbody->First Heading
+  var getTableFirstRow = table.firstElementChild.firstChild.nextElementSibling; //Table->tbody->First Heading Row -> First row elements
+
+  //Checkbox bg color change and adding new elements
   if (checkBox.checked == true) {
-    selcheckboxrow.style.backgroundColor = "Yellow";
-    // var deleteButtonHeader = document.createElement("th");
-    // deleteButtonHeader.innerHTML = 'Delete'
-    // adddelcol.appendChild(deleteButtonHeader);
-    var deleteButton = document.createElement("td");
-    var idkvar = document.createElement("th");
-    var idkvar2 = document.createElement("th");
-    var inneridkvar3 = document.createElement("td");
-    inneridkvar3.innerHTML = '<button id="edited" type="button" onClick="onEditRow(this)" >Edit</button>'
 
-  
-    idkvar.innerHTML = 'Delete';
-    idkvar2.innerHTML = 'Edit';
+    selcheckboxrow.style.backgroundColor = "Yellow"; //Changes bgcolor of the checkbox row
+
+    var deleteButton = document.createElement("td"); //Add new td
+    var deleteBtnRowHeading = document.createElement("th"); // Add new th to delete Btn Heading
+    deleteBtnRowHeading.innerHTML = 'Delete';
     deleteButton.innerHTML = '<button id="deleted" type="button" onClick="onDeleteRow(this)" >Delete</button>'
-    
-    idkletssee.appendChild(idkvar);
-    idkletssee.appendChild(idkvar2);
-    idkletssee2.appendChild(inneridkvar3);
-   
-
-    console.log(idkletssee);
+    getTableHeadingRow.appendChild(deleteBtnRowHeading);
     selcheckboxrow.appendChild(deleteButton);
+
+
+    var editButton = document.createElement("td"); //Add new teable Data to table?
+    var editBtnRowHeading = document.createElement("th"); //Add new th to edit btn Heading
+    editBtnRowHeading.innerHTML = 'Edit';
+    editButton.innerHTML = '<button id="edited" type="button" onClick="onEditRow(this)" >Edit</button>'
+    getTableHeadingRow.appendChild(editBtnRowHeading);
+    selcheckboxrow.appendChild(editButton);
+   
+    console.log("Checkbox should be delete"+selcheckboxrow);
+    console.log("Edit should be edit"+getTableHeadingRow);
   }
-  else {
+  else 
+  {
     selcheckboxrow.style.backgroundColor = "White";
     selcheckboxrow.deleteCell(9);
-    idkletssee.deleteCell(9);
+    getTableHeadingRow.deleteCell(9);
     console.log("def working");
     selcheckboxrow.deleteCell(8);
-    idkletssee.deleteCell(8);
+    getTableHeadingRow.deleteCell(8);
     console.log("maybeworking");
     
-
-    // selcheckboxrow.
-    // selcheckboxrow.deleteColumn(8)
-    // selcheckboxrow.deleteCell(9);
   }
-
- 
-
-
 
 }
 
