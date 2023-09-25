@@ -1,0 +1,102 @@
+//Title constructor function that creates a Title object
+function Title(t1) 
+{ this.mytitle = t1;
+}
+
+window.onload = function(){
+  alert('JS Working')
+}
+Title.prototype.getName = function () 
+{ 
+return (this.mytitle);
+}
+
+var socialMedia = {
+  facebook : 'http://facebook.com',
+  twitter: 'http://twitter.com',
+  flickr: 'http://flickr.com',
+  youtube: 'http://youtube.com'
+};
+
+var t = new Title("CONNECT WITH ME!");
+
+
+function tableView() {
+  var tbl = document.getElementsByClassName("dropDownTextArea");
+  console.log("first");
+  Array.from(tbl).forEach((x) => {
+    if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    console.log("broosecond");
+    x.style.display = "block";
+  }
+})
+};
+
+  // document.getElementById("button").disabled = true;
+function addrecord() {
+
+  var table = document.getElementById("myTable");
+  console.log(table);
+  // var fulltextbro = table.lastElementChild?.firstChild?.nextElementSibling?.firstElementChild?.nextElementSibling?.innerHTML;
+  // var fulltextbro = table.lastElementChild?.lastChild?.previousSibling?.previousElementSibling?.firstElementChild?.nextElementSibling?.innerHTML
+// var fulltextbro = table.lastElementChild.firstElementChild.nextElementSibling,innerHTML;
+
+
+table.lastElementChild.lastElementChild.previousElementSibling.firstElementChild.nextElementSibling.innerHTML
+
+
+// var fulltextbro = table.lastElementChild?.firstElementChild?.nextElementSibling?.innerHTML || "Book 0"
+// 
+// var fulltextbro = table.lastElementChild.lastElementChild?.firstElementChild?.nextElementSibling?.innerHTML;
+var fulltextbro = table.lastElementChild.lastElementChild.previousElementSibling.firstElementChild.nextElementSibling.innerHTML;
+console.log(fulltextbro);
+
+  var lastindex = fulltextbro.split(" ")[1];
+
+
+console.log(lastindex+"dfdf");
+  var table = document.getElementById("myTable");
+  var trNode = document.createElement("tr");
+  var tdcheckboxNode = document.createElement("td");
+  tdcheckboxNode.innerHTML = '<input type="checkbox"><br/><br/><img src="./down.png" width="25px" onclick="tableView()">' 
+  var tdBookNode = document.createElement("td");
+  tdBookNode.innerHTML = 'Student '+(parseInt(lastindex)+1)
+  // tdBookNode.innerHTML = 'Student broooo'
+
+  var tdAuthor = document.createElement("td");
+  tdAuthor.innerHTML = 'Teacher random'
+  var tdAuthor2 = document.createElement("td");
+  tdAuthor2.innerHTML = 'Approved'
+  var tdAuthor3 = document.createElement("td");
+  tdAuthor3.innerHTML = 'Fall'
+  var tdAuthor4 = document.createElement("td");
+  tdAuthor4.innerHTML = 'TA'
+  var tdAuthor5 = document.createElement("td");
+  tdAuthor5.innerHTML = '12344'
+  var tdAuthor7 = document.createElement("td");
+  tdAuthor7.innerHTML = '100%'
+  var tdAuthor8 = document.createElement("td");
+  tdAuthor8.innerHTML = '<button>Delete</button>'
+  var trNode = document.createElement("tr");
+  var tdAuthor9 = document.createElement("td");
+  tdAuthor9.innerHTML = 'Advisor:<br /><br />Award Details<br />Summer 1-2014(TA)<br />Budget Number: <br />Tuition Number: <br />Comments:<br /><br /><br />Award Status:<br /><br /><br />'
+
+
+     trNode.appendChild(tdcheckboxNode);
+     trNode.appendChild(tdBookNode);
+     trNode.appendChild(tdAuthor);
+     trNode.appendChild(tdAuthor2);
+     trNode.appendChild(tdAuthor3);
+     trNode.appendChild(tdAuthor4);
+     trNode.appendChild(tdAuthor5);
+       trNode.appendChild(tdAuthor7);
+     trNode.appendChild(tdAuthor8);
+     trNode.appendChild(tdAuthor9);
+     table.appendChild(trNode);
+
+
+   
+  
+  }
