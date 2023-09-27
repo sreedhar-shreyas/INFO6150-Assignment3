@@ -186,9 +186,13 @@ function onClickCheckBox(checkBox) {
     selcheckboxrow.style.backgroundColor = "White";
 
     selcheckboxrow.deleteCell(9);
+    getTableHeadingRow.deleteCell(9);
+    console.log("shreyas")
 
     console.log("def working");
+    
     selcheckboxrow.deleteCell(8);
+    getTableHeadingRow.deleteCell(8);
 
     console.log("maybeworking");
   }
@@ -265,5 +269,3 @@ function onEditRow(editButtonRef) {
   }
 }
 
-
-//ondelete it should not delete main heading
