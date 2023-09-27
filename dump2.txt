@@ -378,3 +378,49 @@ function onDeleteRow(deleteButtonRef) {
   console.log("def working");
 
 }
+
+
+
+
+
+26 sep 23 night 930 update
+
+if (checkBox.checked == true) {
+    myarray +=1;
+    selcheckboxrow.style.backgroundColor = "Yellow"; //Changes bgcolor of the checkbox row
+    // document.querySelector('#button').disabled = false;
+
+    var deleteButton = document.createElement("td"); //Add new td
+    var deleteBtnRowHeading = document.createElement("th"); // Add new th to delete Btn Heading
+    deleteBtnRowHeading.innerHTML = 'Delete';
+    deleteButton.innerHTML =
+      '<button id="deleted" type="button" onClick="onDeleteRow(this)" >Delete</button>';
+    getTableHeadingRow.appendChild(deleteBtnRowHeading);
+    selcheckboxrow.appendChild(deleteButton);
+
+    var editButton = document.createElement("td"); //Add new teable Data to table?
+    var editBtnRowHeading = document.createElement("th"); //Add new th to edit btn Heading
+    editBtnRowHeading.innerHTML = 'Edit';
+    editButton.innerHTML =
+      '<button id="edited" type="button" onClick="onEditRow(this)" >Edit</button>';
+    getTableHeadingRow.appendChild(editBtnRowHeading);
+    selcheckboxrow.appendChild(editButton);
+
+    console.log("Checkbox should be delete" + selcheckboxrow);
+    console.log("Edit should be edit" + getTableHeadingRow);
+  } else {
+    // myarray -=1
+    selcheckboxrow.style.backgroundColor = "White";
+    if (checkBox.checked == true){
+      console.log("do nothing")
+    } else{
+
+    
+    selcheckboxrow.deleteCell(9);
+    getTableHeadingRow.deleteCell(9);
+    console.log("def working");
+    selcheckboxrow.deleteCell(8);
+    getTableHeadingRow.deleteCell(8);
+    console.log("maybeworking");
+  }
+  }

@@ -148,6 +148,61 @@ function onClickCheckBox(checkBox) {
     document.querySelector("#button").disabled = true;
   }
 
+
+
+  if (checkBox.checked == true) {
+    console.log(checkedElms)
+    selcheckboxrow.style.backgroundColor = "Yellow"; //Changes bgcolor of the checkbox row
+    // document.querySelector('#button').disabled = false;
+    if ((checkBox.checked == true) && (checkedElms <= 1)){
+      console.log("inside loop nope");
+      var deleteBtnRowHeading = document.createElement("th"); // Add new th to delete Btn Heading
+      deleteBtnRowHeading.innerHTML = 'Delete';
+      getTableHeadingRow.appendChild(deleteBtnRowHeading);
+      var editBtnRowHeading = document.createElement("th"); //Add new th to edit btn Heading
+      editBtnRowHeading.innerHTML = 'Edit';
+      getTableHeadingRow.appendChild(editBtnRowHeading);
+    } else if((checkBox.checked == false) && (checkedElms >1)){
+      console.log("else loop");
+      
+    }
+      
+    var deleteButton = document.createElement("td"); //Add new td
+   
+    deleteButton.innerHTML =
+      '<button id="deleted" type="button" onClick="onDeleteRow(this)" >Delete</button>';
+    
+    selcheckboxrow.appendChild(deleteButton);
+
+    var editButton = document.createElement("td"); //Add new teable Data to table?
+   
+    editButton.innerHTML =
+      '<button id="edited" type="button" onClick="onEditRow(this)" >Edit</button>';
+
+    selcheckboxrow.appendChild(editButton);
+
+    console.log("Checkbox should be delete" + selcheckboxrow);
+    console.log("Edit should be edit" + getTableHeadingRow);
+  } else {
+    // myarray -=1
+    selcheckboxrow.style.backgroundColor = "White";
+    // if (checkBox.checked == true){
+    //   console.log("do nothing")
+    // } else{
+      // if ((checkBox.checked == false) && checkedElms ==0) {
+        selcheckboxrow.deleteCell(9);
+        
+        console.log("def working");
+        selcheckboxrow.deleteCell(8);
+   
+        console.log("maybeworking");
+      }
+    if ((checkBox.checked == false) && checkedElms ==0) {
+      getTableHeadingRow.deleteCell(9);
+           getTableHeadingRow.deleteCell(8);
+    }
+  }
+  
   
   // do {
   //   var deleteBtnRowHeading = document.createElement("th"); // Add new th to delete Btn Heading
@@ -159,45 +214,7 @@ function onClickCheckBox(checkBox) {
   // } while (checkedElms!=0)
 
 
-  if (checkBox.checked == true) {
-    myarray +=1;
-    selcheckboxrow.style.backgroundColor = "Yellow"; //Changes bgcolor of the checkbox row
-    // document.querySelector('#button').disabled = false;
-
-    var deleteButton = document.createElement("td"); //Add new td
-    var deleteBtnRowHeading = document.createElement("th"); // Add new th to delete Btn Heading
-    deleteBtnRowHeading.innerHTML = 'Delete';
-    deleteButton.innerHTML =
-      '<button id="deleted" type="button" onClick="onDeleteRow(this)" >Delete</button>';
-    getTableHeadingRow.appendChild(deleteBtnRowHeading);
-    selcheckboxrow.appendChild(deleteButton);
-
-    var editButton = document.createElement("td"); //Add new teable Data to table?
-    var editBtnRowHeading = document.createElement("th"); //Add new th to edit btn Heading
-    editBtnRowHeading.innerHTML = 'Edit';
-    editButton.innerHTML =
-      '<button id="edited" type="button" onClick="onEditRow(this)" >Edit</button>';
-    getTableHeadingRow.appendChild(editBtnRowHeading);
-    selcheckboxrow.appendChild(editButton);
-
-    console.log("Checkbox should be delete" + selcheckboxrow);
-    console.log("Edit should be edit" + getTableHeadingRow);
-  } else {
-    // myarray -=1
-    selcheckboxrow.style.backgroundColor = "White";
-    if (checkBox.checked == true){
-      console.log("do nothing")
-    } else{
-
-    
-    selcheckboxrow.deleteCell(9);
-    getTableHeadingRow.deleteCell(9);
-    console.log("def working");
-    selcheckboxrow.deleteCell(8);
-    getTableHeadingRow.deleteCell(8);
-    console.log("maybeworking");
-  }
-  }
+  
 //   if(selcheckboxrow.style.backgroundColor = "White" ) {
 
  
@@ -220,10 +237,10 @@ function onClickCheckBox(checkBox) {
   // }
   // var form = document.table[0]; // your form element (whatever)
 
-  if (myarray) {
-    console.log(myarray+"defefdefdf working");
-}
-}
+//   if (myarray) {
+//     console.log(myarray+"defefdefdf working");
+// }
+// }
 
 function onDeleteRow(deleteButtonRef) {
   var table = document.getElementById("myTable");
