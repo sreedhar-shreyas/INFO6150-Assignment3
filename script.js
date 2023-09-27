@@ -100,6 +100,8 @@ function tableView() {
 }
 
 let myarray = 0;
+
+
 //checkbox condition
 //Issue - Adds edit to the first child, should be active child row - Resolved by changeing gettablefirstrow to selchceckboxrow for adding edit button
 // document.querySelector('#button').disabled = true;
@@ -141,22 +143,15 @@ function onClickCheckBox(checkBox) {
   var checkedElms = table.querySelectorAll(":checked").length;
   console.log(checkedElms + "hahahahah");
 
-  if (checkedElms >= 1) {
-    document.querySelector("#button").disabled = false;
-    
-  } else {
-    document.querySelector("#button").disabled = true;
-  }
 
-
-
+var seeifcheckboxstatusworks = checkBox.checked;
   if (checkBox.checked == true) {
     console.log(checkedElms)
     selcheckboxrow.style.backgroundColor = "Yellow"; //Changes bgcolor of the checkbox row
     // document.querySelector('#button').disabled = false;
     if ((checkBox.checked == true) && (checkedElms <= 1)){
       console.log("inside loop nope");
-      var deleteBtnRowHeading = document.createElement("th"); // Add new th to delete Btn Heading
+      var deleteBtnRowHeading = document.createElement("th"); // Add new th to  Btn Heading
       deleteBtnRowHeading.innerHTML = 'Delete';
       getTableHeadingRow.appendChild(deleteBtnRowHeading);
       var editBtnRowHeading = document.createElement("th"); //Add new th to edit btn Heading
@@ -201,7 +196,18 @@ function onClickCheckBox(checkBox) {
       getTableHeadingRow.deleteCell(9);
            getTableHeadingRow.deleteCell(8);
     }
+
+
+  if (checkedElms >= 1) {
+    document.querySelector("#button").disabled = false;
   }
+  
+  else {
+    document.querySelector("#button").disabled = true;
+  }
+    
+}
+  
   
   
   // do {
@@ -242,20 +248,39 @@ function onClickCheckBox(checkBox) {
 // }
 // }
 
+
 function onDeleteRow(deleteButtonRef) {
   var table = document.getElementById("myTable");
   var getTableHeadingRow = table.lastElementChild.firstChild; //Table->tbody->First Heading
+  myarray+=1;
 
   var selectedRow = deleteButtonRef.parentElement.parentElement;
   var index = selectedRow.rowIndex;
+  var index2 = selectedRow.firstElementChild.nextElementSibling.innerHTML;
+
   document.getElementById("myTable").deleteRow(selectedRow.rowIndex);
-  alert("Row " + index + " Sucessfully been deleted");
+  // confirm("Do you really want to delete"+ index + " ?");
+  // if(confirm){
+  //   alert("Row " + index + " Sucessfully been deleted");
+  // }
+  // else{
+  //   alert("ok, didn't deleted");
+  // }
 
   getTableHeadingRow.deleteCell(-1);
   getTableHeadingRow.deleteCell(-1);
   // document.querySelector('#button').disabled = true;
-
+myarray+=1;
   console.log("def working");
+
+  if(onClickCheckBox.checkedElms == 0){
+    document.querySelector("#button").disabled = true;
+  
+  } 
+  else{
+    document.querySelector("#button").disabled = true;
+  
+  } 
 }
 
 function onEditRow(editButtonRef) {
@@ -264,5 +289,12 @@ function onEditRow(editButtonRef) {
 
   var selectedRow = editButtonRef.parentElement.parentElement;
   var index = selectedRow.firstElementChild.nextElementSibling.innerHTML;
-  prompt("Edit " + index + " Details:");
+
+ prompt("Edit " + index + " Details:");
+
+  if(prompt != null){
+    alert("Edited Successfully")
+  }
 }
+
+
