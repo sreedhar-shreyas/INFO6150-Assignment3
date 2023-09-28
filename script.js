@@ -64,12 +64,19 @@ function addrecord() {
   tableDataPercentage.innerHTML = "100%";
 
   var tableDataAddnewtr = document.createElement("tr");
-  tableDataAddnewtr.className = "dropDownTextArea"; //broaddclasstoelement
+  tableDataAddnewtr.className = "dropDownTextArea";
+ 
+   //broaddclasstoelement
 
   var tableDataDropdownText = document.createElement("td");
-  tableDataDropdownText.innerHTML =
-    "Advisor:<br /><br />Award Details<br />Summer 1-2014(TA)<br />Budget Number: <br />Tuition Number: <br />Comments:<br /><br /><br />Award Status:<br /><br /><br />";
+  // tableDataDropdownText.innerHTML = "<style> <td colspan="8">"
+  // tableDataDropdownText.colSpan = 8;
+  // tableDataDropdownText.setAttribute("colspan", "7");
+  tableDataDropdownText.innerHTML = "Advisor:"+(parseInt(lastIndex) + 1)+"<br /><br />Award Details<br />Summer 1-2014(TA)<br />Budget Number: <br />Tuition Number: <br />Comments:<br /><br /><br />Award Status:<br /><br /><br />";
 
+  
+
+  
   tableRow.appendChild(tdCheckBoxNode);
   tableRow.appendChild(tableDataStudent);
 
