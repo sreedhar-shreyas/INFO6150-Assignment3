@@ -40,7 +40,7 @@ function addrecord() {
 
   var tdCheckBoxNode = document.createElement("td");
   tdCheckBoxNode.innerHTML =
-    '<input type="checkbox" onclick="onClickCheckBox(this)" /><br/><br/><img src="./down.png" width="25px" onclick="tableView()">';
+    '<input type="checkbox" onclick="onClickCheckBox(this)" /><br/><br/><img src="./down.png" width="25px" onclick="tableView(this)">';
 
   var tableDataStudent = document.createElement("td");
   tableDataStudent.innerHTML = "Student " + (parseInt(lastIndex) + 1);
