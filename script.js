@@ -101,33 +101,19 @@ function addrecord() {
 
 
 
-function loadTable(){
-  var tbl = document.getElementsByClassName("dropDownTextArea");
-  console.log("tbl variable got the data");
-  Array.from(tbl).forEach((x) => {
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
-      console.log("in the else condition");
-      x.style.display = "none";
-    }
-  });
+function tableView(element) {
+ 
+
+var tbl = element.parentElement.parentElement.nextElementSibling;
+
+if(tbl.style.display === "block"){
+  tbl.style.display = "none"
 }
-
-
-function tableView() {
-  var tbl = document.getElementsByClassName("dropDownTextArea");
-  console.log("tbl variable got the data");
-  Array.from(tbl).forEach((x) => {
-    if (x.style.display === "block") {
-      x.style.display = "none";
-    } else {
-      console.log("in the else condition");
-      x.style.display = "block";
-    }
-  });
+else{
+  tbl.style.display="block"
 }
-
+}
+  
 let myarray = 0;
 
 
@@ -196,10 +182,6 @@ function onClickCheckBox(checkBox) {
 
     console.log("maybeworking");
   }
-  // if (checkBox.checked == false && checkedElms == 0) {
-  //   getTableHeadingRow.deleteCell(9);
-  //   getTableHeadingRow.deleteCell(8);
-  // }
 
   if (checkedElms >= 1) {
     document.querySelector("#button").disabled = false;
